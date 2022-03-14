@@ -72,12 +72,14 @@ export default {
           const params = new URLSearchParams();
           params.append("username", this.formData.username);
           params.append("password", this.formData.password);
-          console.log("ok", params);
+          // console.log("ok", params);
+          // 登录返回结果
           const loginData = await login(params);
           // console.log(loginData.status);
           if (loginData.data.code === 400) {
             this.$message.error("账号或者密码错误，请重新登录");
           } else if (loginData.status === 200 && loginData.data.code === 200) {
+            // 存储token
             window.localStorage.token = loginData.data.data.token;
             window.localStorage.name = loginData.data.data.name;
             this.$message({

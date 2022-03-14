@@ -114,6 +114,7 @@ export default {
     };
   },
   methods: {
+    // 打开修改界面
     async checkStaffInfo(id) {
       // 发包判断权限,并且获取data
       let staffInfo = await getStaffInfo({
@@ -126,6 +127,7 @@ export default {
     },
     close() {
       this.dialogTableVisible = false;
+      // 清空
       this.dialogData = {
         id: "",
         name: "",
@@ -136,6 +138,7 @@ export default {
         jobName: "",
       };
     },
+    // 提交表单
     async submitForm() {
       const setResult = await setStaffInfo(
         { token: window.localStorage.token, data: this.dialogData },
